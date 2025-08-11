@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Ahmed Akram</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ===== Page-specific layout & typography normalization ===== */
+    body, h1, h2, h3, p, li, a, span, small, strong, em, button {
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC",
+                   "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+    }
+
+    .about-wrap { padding: 24px 0 8px; }
+    .about-section {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .about-section h2 { margin: 0 0 8px; }
+    .about-section .muted { color: var(--muted); }
+
+    /* 既有列表規則（保留給未客製的 li） */
+    .list-tight { list-style: none; margin: 0; padding-left: 0; }
+    .list-tight li {
+      position: relative;
+      margin: 10px 0;
+      line-height: 1.6;
+      text-align: left;
+      padding-right: 18ch; /* 預留日期空間 */
+    }
+    .list-tight li > i:first-of-type {
+      position: absolute;
+      right: 0;
+      top: 0;
+      white-space: nowrap;
+      text-align: right;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* Skills 標籤：字體一致 */
+    .tag {
+      display:inline-block;
+      font-family: inherit;
+      font-weight: inherit;
+      letter-spacing: normal;
+      font-size: 14px;
+      padding: 2px 8px;
+      margin: 0 6px 6px 0;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 999px;
+    }
+
+    .kv { display:grid; grid-template-columns: 160px 1fr; gap: 10px; align-items:start; }
+    .kv b { color: var(--text); }
+
+    /* Hero split: text left, photo right */
+    .hero-split {
+      padding: 48px 0 24px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      background:linear-gradient(180deg, rgba(147,197,177,.18), rgba(11,13,15,0));
+    }
+    .hero-grid {
+      display:grid; gap:24px; align-items:center;
+      grid-template-columns: 1.2fr .8fr;
+    }
+    .hero-grid h1 { margin:0 0 8px; font-size:40px; line-height:1.2 }
+    .hero-sub { margin:0; }
+    .hero-lang { margin:6px 0 0; color: var(--muted); }
+    .hero-photo-wrap { display:flex; justify-content:flex-end }
+    .hero-photo {
+      width:220px; height:220px; border-radius:50%;
+      object-fit:cover; border:3px solid rgba(255,255,255,.18);
+      box-shadow: 0 6px 24px rgba(0,0,0,.35);
+    }
+
+    /* Two-up sections (Skills / International) */
+    .two-grid { display:grid; gap:20px; grid-template-columns: repeat(2, 1fr); }
+
+    /* ===== 你指定的客製規則 ===== */
+
+    /* International Experience：title 左 / 日期右，同列；描述滿版換行 */
+    .ie-list li { padding-right: 0; }
+    .ie-list .li-row { display:flex; align-items:flex-start; gap:12px; }
+    .ie-list .li-title { font-weight:700; }
+    .ie-list .li-date { margin-left:auto; white-space:nowrap; color:var(--muted); font-style:italic; }
+    .ie-list .li-desc { display:block; margin-top:4px; }
+
+    /* Professional：title 左 / 日期右，同列；bullets 滿版 + 分隔線 */
+    .jobs-list li.no-pad { padding-right:0; }
+    .jobs-list .li-row { display:flex; align-items:flex-start; gap:12px; }
+    .jobs-list .li-title { font-weight:700; }
+    .jobs-list .li-date { margin-left:auto; white-space:nowrap; color:var(--muted); font-style:italic; }
+    .subbullets { list-style:disc; margin:8px 0 0 18px; padding:0; }
+
+    /* 新增：分隔線樣式 */
+    .jobs-list li.no-pad + li.no-pad {
+      border-top: 1px solid rgba(255,255,255,.14);
+      margin-top: 16px;
+      padding-top: 16px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid { grid-template-columns: 1fr; text-align:center }
+      .hero-photo-wrap { justify-content:center }
+    }
+    @media (max-width: 900px){
+      .two-grid { grid-template-columns: 1fr; }
+
+      /* RWD：把 date 放到下一行 */
+      .ie-list .li-row, .jobs-list .li-row { flex-wrap: wrap; }
+      .ie-list .li-date, .jobs-list .li-date { margin-left:0; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"> Ahmed Akram • Portfolio</a>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO (text left, photo right) ===== -->
+  <header class="hero-split">
+    <div class="container hero-grid">
+      <div>
+        <h1>About Ahmed Akram</h1>
+        <p class="hero-sub">International B2B Sales · Cross-Functional Collaboration · Stakeholder Management · Account Management · CRM</p>
+        <p class="hero-lang">English | Urdu | French</p>
+      </div>
+      <div class="hero-photo-wrap">
+        <img class="hero-photo" src="./images/my-photo.jpg" alt="Ahmed Akram">
+      </div>
+    </div>
+  </header>
+
+  <main class="container about-wrap">
+
+    <!-- ===== 1) Academic Background ===== -->
+    <section class="about-section">
+      <h2>1) Academic Background</h2>
+      <ul class="list-tight">
+        <li>
+          <b>emlyon business school | International MBA (Entrepreneurship)</b>, Lyon, France
+          <i>Aug 2024 – Aug 2025</i>
+        </li>
+        <li>
+          <b>University of Cape Town | Bachelor of Commerce (Management Studies)</b>, South Africa
+          <i>Jan 2016 – Jun 2020</i>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== 2) Professional Background ===== -->
+    <section class="about-section" style="margin-top:20px">
+      <h2>2) Professional Background</h2>
+      <ul class="list-tight jobs-list">
+
+        <li class="no-pad">
+          <div class="li-row">
+            <span class="li-title"><b>Head of Business Development | SA Note (Launch Stage SaaS Medical Edtech), UK</b></span>
+            <span class="li-date">Mar 2024 – Present</span>
+          </div>
+          <ul class="subbullets">
+            <li>Led institutional outreach across the UK, conducting demos and pilot negotiations with university partners for an edtech SaaS platform.</li>
+            <li>Managed full client engagement cycle from initial contact to onboarding and feedback, ensuring platform delivery aligned with institutional needs.</li>
+            <li>Developed and implemented a tiered pricing model optimised for affordability, retention, and recurring revenue.</li>
+            <li>Drove go-to-market strategy through UX benchmarking, pricing comparisons, and competitor mapping to highlight key differentiators.</li>
+            <li>Launched market research campaigns (150+ responses) to validate feature demand and pricing sensitivity, achieving a 56.2% pilot adoption rate.</li>
+            <li>Reduced product development costs by 50% through strategic vendor renegotiation and team restructuring.</li>
+            <li>Built lead generation funnels using Typeform and integrated CRM email flows; oversaw cross-team operations via ClickUp and Notion.</li>
+          </ul>
+        </li>
+
+        <li class="no-pad">
+          <div class="li-row">
+            <span class="li-title"><b>Business Development Lead | Balacotti (B2B Retail Supplier, acquired by Skye Distribution Pty Ltd), South Africa</b></span>
+            <span class="li-date">May 2022 – Feb 2024</span>
+          </div>
+          <ul class="subbullets">
+            <li>Drove growth across 9 B2B accounts, contributing to a 30% YoY revenue increase through tailored expansion strategies and relationship management.</li>
+            <li>Spearheaded nationwide expansion through competitive benchmarking, pricing reviews, and regional client acquisition.</li>
+            <li>Launched a digital ordering platform, reducing lead-to-order cycle time by 30%.</li>
+            <li>Managed a cross-functional team of 8 and negotiated supplier contracts during international business trips to Pakistan.</li>
+            <li>Coordinated production and logistics to align fulfilment with client expectations, reducing delivery delays by over 20%.</li>
+            <li>Built scalable CRM frameworks improving client retention and forecast accuracy for recurring orders.</li>
+          </ul>
+        </li>
+
+        <li class="no-pad">
+          <div class="li-row">
+            <span class="li-title"><b>Junior Account Manager | Red Communication Arts (Agency Publicis Groupe), Pakistan</b></span>
+            <span class="li-date">May 2021 – Apr 2022</span>
+          </div>
+          <ul class="subbullets">
+            <li>Managed branding and campaign execution for clients including Nestlé Bunyad, Rivaj UK, Insignia Shoes, and Molty Foam.</li>
+            <li>Supported Insignia Shoes’ national rebrand, coordinating creative teams to increase foot traffic by 18% and Instagram engagement by 25%.</li>
+            <li>Shaped go-to-market positioning for Molty Foam’s “Mattress-in-a-Box,” launching a new DTC category in Pakistan.</li>
+            <li>Led creative briefings, oversaw production of multi-channel campaigns, and ensured consistent delivery.</li>
+            <li>Conducted market audits and competitive research to inform storytelling and secure two new accounts.</li>
+            <li>Acted as key liaison between clients and internal teams, translating commercial goals into actionable briefs.</li>
+          </ul>
+        </li>
+
+        <li class="no-pad">
+          <div class="li-row">
+            <span class="li-title"><b>Sales Assistant | Gangat Wholesale Distributors (B2B Supplier), South Africa</b></span>
+            <span class="li-date">Jun 2020 – Apr 2021</span>
+          </div>
+          <ul class="subbullets">
+            <li>Supported national B2B sales operations, servicing a portfolio of independent retailers.</li>
+            <li>Managed outreach, order processing, and relationship follow-ups, contributing to high seasonal re-order rates.</li>
+            <li>Developed internal tracking systems using Excel to improve stock visibility and order accuracy.</li>
+            <li>Built core commercial skills in communication, time management, and operational coordination.</li>
+          </ul>
+        </li>
+
+        <li class="no-pad">
+          <div class="li-row">
+            <span class="li-title"><b>Co-Founder | EnJade (E-commerce), France</b></span>
+            <span class="li-date">Jan 2025 – Present</span>
+          </div>
+          <ul class="subbullets">
+            <li>Defined brand positioning and customer segmentation for entry into the French luxury jewellery market.</li>
+            <li>Built and optimised a multilingual e-commerce platform (Squarespace, Weglot, SEO) for cross-border sales readiness.</li>
+            <li>Planned and executed French launch event, generating qualified leads and customer insights.</li>
+            <li>Designed secure verification system for jadeite jewellery to build buyer trust and reduce purchase hesitation.</li>
+            <li>Established tiered pricing and early marketing partnerships, including influencer seeding and launch-focused content calendars.</li>
+          </ul>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- ===== 3) Skills + 4) International ===== -->
+    <div class="two-grid" style="margin-top:20px">
+      <section class="about-section">
+        <h2>3) Skills</h2>
+        <p><b>Core Competencies</b></p>
+        <div>
+          <span class="tag">Project Management | Product Lifecycle & Roadmaps</span>
+          <span class="tag">KPI Optimization | Cross-Functional Collaboration</span>
+          <span class="tag">Stakeholder Management | Suppliers Negotiation</span>
+          <span class="tag">Customer Relationship Management | GTM Strategy</span>
+          <span class="tag">Marketing Strategy | SEO | Social Media Ads</span>
+        </div>
+
+        <p style="margin-top:10px"><b>Tools</b></p>
+        <div>
+          <span class="tag">Excel | Microsoft Office | Notion | Trello</span>
+          <span class="tag">Slack | ClickUp | Loop | Google Looker Studio | Tableau</span>
+          <span class="tag">HubSpot | Zoho CRM | Acrobat | Canva | Google Analytics | Figma</span>
+          <span class="tag">Squarespace | Wix | Shopify | HTML | Java | GDSCript</span>
+        </div>
+
+        <p style="margin-top:10px"><b>Ongoing Learning</b></p>
+        <div>
+          <span class="tag">CAPM</span>
+        </div>
+      </section>
+
+      <section class="about-section">
+        <h2>4) International Experience</h2>
+        <ul class="list-tight ie-list">
+          <li>
+            <div class="li-row">
+              <span class="li-title"><b>Institut Catholique de Paris</b></span>
+              <span class="li-date">Jan – Jun 2018</span>
+            </div>
+            <span class="li-desc">Exchange Student | Paris, France</span>
+          </li>
+          <li>
+            <div class="li-row">
+              <span class="li-title"><b>White Water Elderly Charity Association</b></span>
+              <span class="li-date">Aug 2016</span>
+            </div>
+            <span class="li-desc">International Clinic Volunteer | Cambodia</span>
+            <span class="li-desc">Supported educational outreach, basic health education, and distribution of essential supplies.</span>
+          </li>
+          <li>
+            <div class="li-row">
+              <span class="li-title"><b>White Water Elderly Charity Association</b></span>
+              <span class="li-date">Aug 2017</span>
+            </div>
+            <span class="li-desc">International Clinic Volunteer | Cambodia</span>
+            <span class="li-desc">Supported educational outreach, basic health education, and distribution of essential supplies.</span>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- ===== 5) Interests ===== -->
+    <section class="about-section" style="margin-top:20px">
+      <h2>5) Certifications</h2>
+      <p>Inside LVMH Certification &nbsp; | &nbsp; 2025 L'Oréal Brandstorm challenge </p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container small">© 2025 Ahmed Akram — All rights reserved.</div>
+  </footer>
+</body>
+</html>
